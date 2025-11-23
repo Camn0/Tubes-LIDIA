@@ -8,13 +8,13 @@
 
 Proyek ini adalah *notebook* Jupyter (`.ipynb`) yang mendokumentasikan proses *end-to-end* pengolahan data produksi migas dari 5 sumur lepas pantai (*offshore*). Fokus utama proyek ini adalah pembersihan data (*data cleaning*) yang ketat, analisis eksploratif, dan pembangunan model *Machine Learning* untuk memprediksi laju produksi gas.
 
-## 🛢️ Latar Belakang Proyek
+## Latar Belakang Proyek
 
 Data berasal dari lapangan lepas pantai dengan 5 sumur aktif (AA1 - AA5) yang memproduksi *dry gas* dan air, dimulai sekitar tahun 2021. Setiap sumur dilengkapi dengan berbagai sensor tekanan dan temperatur pada *choke*, *casing-annulus*, *wellhead*, dan *bottomhole*.
 
 Tujuan utama adalah membersihkan data dari *noise* dan membangun model prediksi yang akurat untuk parameter produksi.
 
-## 📂 Kamus Data (Data Dictionary)
+## Kamus Data (Data Dictionary)
 
 Dataset asli memiliki format lebar (*wide format*) dengan kode sensor tertentu. Berikut adalah pemetaan variabel yang digunakan dalam analisis:
 
@@ -32,7 +32,7 @@ Dataset asli memiliki format lebar (*wide format*) dengan kode sensor tertentu. 
 | `FTHP` | Flowing Tubing Head Pressure | psig |
 | `FTHT` | Flowing Tubing Head Temperature | degC |
 
-## 🛠️ Alur Kerja (Pipeline)
+## Alur Kerja (Pipeline)
 
 Proyek ini terdiri dari beberapa tahapan utama yang didokumentasikan dalam notebook:
 
@@ -59,7 +59,7 @@ Untuk meningkatkan kinerja model *machine learning*, fitur-fitur baru dibuat:
 * **Proyeksi Eksogen:** Menggunakan **Linear Regression** untuk memproyeksikan nilai masa depan parameter tekanan (`FTHP`, `FBHP`) yang digunakan sebagai *input* model XGBoost.
 * **Evaluasi:** Model dievaluasi menggunakan metrik MAE, MSE, RMSE, dan R-Squared.
 
-## 📊 Hasil Evaluasi Model
+## Hasil Evaluasi Model
 
 Contoh hasil evaluasi pada Sumur AA1 (Tuned XGBoost pada data yang di-*smooth*):
 
@@ -71,7 +71,7 @@ Contoh hasil evaluasi pada Sumur AA1 (Tuned XGBoost pada data yang di-*smooth*):
 
 *(Nilai metrik diambil dari output log pelatihan pada notebook)*
 
-## 🚀 Cara Menjalankan
+## Cara Menjalankan
 
 1.  Pastikan Anda memiliki Python 3.10+ dan pustaka yang diperlukan:
     ```bash
