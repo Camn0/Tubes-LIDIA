@@ -10,13 +10,13 @@ Proyek ini adalah *notebook* Jupyter (`.ipynb`) yang mendokumentasikan proses *e
 
 ## 🛢️ Latar Belakang Proyek
 
-[cite_start]Data berasal dari lapangan lepas pantai dengan 5 sumur aktif (AA1 - AA5) yang memproduksi *dry gas* dan air, dimulai sekitar tahun 2021[cite: 222]. Setiap sumur dilengkapi dengan berbagai sensor tekanan dan temperatur pada *choke*, *casing-annulus*, *wellhead*, dan *bottomhole*.
+Data berasal dari lapangan lepas pantai dengan 5 sumur aktif (AA1 - AA5) yang memproduksi *dry gas* dan air, dimulai sekitar tahun 2021[cite: 222]. Setiap sumur dilengkapi dengan berbagai sensor tekanan dan temperatur pada *choke*, *casing-annulus*, *wellhead*, dan *bottomhole*.
 
 Tujuan utama adalah membersihkan data dari *noise* dan membangun model prediksi yang akurat untuk parameter produksi.
 
 ## 📂 Kamus Data (Data Dictionary)
 
-Dataset asli memiliki format lebar (*wide format*) dengan kode sensor tertentu. [cite_start]Berikut adalah pemetaan variabel yang digunakan dalam analisis [cite: 225-227]:
+Dataset asli memiliki format lebar (*wide format*) dengan kode sensor tertentu. Berikut adalah pemetaan variabel yang digunakan dalam analisis [cite: 225-227]:
 
 | Kode Variabel | Deskripsi Fisik | Satuan (Asumsi) |
 | :--- | :--- | :--- |
@@ -38,20 +38,20 @@ Proyek ini terdiri dari beberapa tahapan utama yang didokumentasikan dalam noteb
 
 ### 1. Data Cleaning & Preprocessing
 Pembersihan data dilakukan dengan aturan logika domain *engineering*:
-* [cite_start]**Koreksi Unit:** Kolom `Water Production Rate` dibagi 1000 jika nilainya > 10, untuk mengoreksi kesalahan satuan pencatatan[cite: 11, 39].
-* [cite_start]**Penanganan Outlier Bawah:** Nilai di bawah ambang batas `0.5` dihapus dan digantikan menggunakan interpolasi linear untuk menjaga kontinuitas *time-series* [cite: 2319-2322].
-* [cite_start]**Restrukturisasi Data:** Mengubah format data dari *Wide* ke *Long format* untuk memudahkan pemrosesan berbasis sumur (*Well ID*)[cite: 4978].
+* **Koreksi Unit:** Kolom `Water Production Rate` dibagi 1000 jika nilainya > 10, untuk mengoreksi kesalahan satuan pencatatan.
+* **Penanganan Outlier Bawah:** Nilai di bawah ambang batas `0.5` dihapus dan digantikan menggunakan interpolasi linear untuk menjaga kontinuitas *time-series*.
+* **Restrukturisasi Data:** Mengubah format data dari *Wide* ke *Long format* untuk memudahkan pemrosesan berbasis sumur (*Well ID*).
 
 ### 2. Exploratory Data Analysis (EDA)
-* [cite_start]**Visualisasi Time Series:** Plotting parameter produksi dan sensor untuk setiap sumur guna melihat tren historis[cite: 1448].
-* [cite_start]**Analisis Korelasi:** Menggunakan *Heatmap* untuk melihat hubungan antara tekanan, temperatur, dan laju produksi[cite: 346].
-* [cite_start]**Distribusi Data:** Menggunakan Histogram dan Boxplot untuk melihat sebaran data sensor[cite: 334, 340].
+* **Visualisasi Time Series:** Plotting parameter produksi dan sensor untuk setiap sumur guna melihat tren historis.
+* **Analisis Korelasi:** Menggunakan *Heatmap* untuk melihat hubungan antara tekanan, temperatur, dan laju produksi.
+* **Distribusi Data:** Menggunakan Histogram dan Boxplot untuk melihat sebaran data sensor.
 
 ### 3. Feature Engineering
 Untuk meningkatkan kinerja model *machine learning*, fitur-fitur baru dibuat:
-* [cite_start]**Smoothing:** Penerapan *Rolling Mean* dengan jendela 7 hari untuk mengurangi *noise* harian[cite: 6064].
-* [cite_start]**Lag Features:** Membuat fitur *lag* (t-1, t-3, t-7) untuk menangkap ketergantungan waktu[cite: 6093].
-* [cite_start]**Rolling Statistics:** Menghitung rata-rata dan standar deviasi berjalan[cite: 6103].
+* **Smoothing:** Penerapan *Rolling Mean* dengan jendela 7 hari untuk mengurangi *noise* harian.
+* **Lag Features:** Membuat fitur *lag* (t-1, t-3, t-7) untuk menangkap ketergantungan waktu.
+* **Rolling Statistics:** Menghitung rata-rata dan standar deviasi berjalan.
 
 ### 4. Modelling & Forecasting
 * **Model Utama:** Menggunakan **XGBoost Regressor** untuk memprediksi `Gas_Production_Rate`.
